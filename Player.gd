@@ -3,6 +3,7 @@ export var speed = 400
 var screen_size
 signal hit
 
+
 func _ready():
 	screen_size = get_viewport_rect().size
 	hide()
