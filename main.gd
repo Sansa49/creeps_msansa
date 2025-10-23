@@ -10,13 +10,16 @@ var score
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
 
-
+func update_score(score):
+	$ScoreLabel.text = str(score)
+	
 func game_over():
 	$ScoreTimer.stop()
 	$MobTimer.stop()
@@ -25,7 +28,6 @@ func new_game():
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-	get_tree().call_group("mobs", "queue_free")
 
 
 func _on_MobTimer_timeout():
@@ -55,3 +57,10 @@ func _on_ScoreTimer_timeout():
 func _on_StartTimer_timeout():
 	$MobTimer.start()
 	$ScoreTimer.start()
+	
+func _on_StartButton_pressed():
+	$StartButton.hide()
+	emit_signal("start_game")
+	
+func _on_MessageTimer_timeout():
+	$Message.hide()
