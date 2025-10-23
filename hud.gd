@@ -1,5 +1,6 @@
 extends CanvasLayer
 signal start_game
+var score
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -27,6 +28,16 @@ func show_game_over():
 #	pass
 
 
-func new_game():
+func start_game():
+	print("start game hud")
 	$HUD.update_score(score)
 	$HUD.show_message("Get Ready")
+
+func _on_Button_pressed():
+	print("PRE_on_Button_pressed")
+	$StartButton.hide()
+	emit_signal("start_game")
+	print("POST_on_Button_pressed")
+
+func _on_MessageTimer_timeout():
+	$Message.hide()
