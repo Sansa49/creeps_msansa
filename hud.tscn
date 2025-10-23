@@ -27,7 +27,7 @@ custom_fonts/font = SubResource( 1 )
 text = "0
 "
 
-[node name="Message" type="Label" parent="."]
+[node name="Missatge" type="Label" parent="."]
 margin_left = 34.0
 margin_top = 225.0
 margin_right = 512.0
@@ -39,7 +39,7 @@ CREEPS!"
 [node name="MessageTimer" type="Timer" parent="."]
 wait_time = 2.0
 
-[node name="StartButton" type="Button" parent="."]
+[node name="Button" type="Button" parent="."]
 margin_left = 167.0
 margin_top = 489.0
 margin_right = 313.0
@@ -47,5 +47,4 @@ margin_bottom = 539.0
 custom_fonts/font = SubResource( 3 )
 text = "START"
 
-[connection signal="timeout" from="MessageTimer" to="." method="_on_MessageTimer_timeout"]
-[connection signal="pressed" from="StartButton" to="." method="_on_Button_pressed"]
+[connection signal="start_game" from="." to="." method="new_game"]

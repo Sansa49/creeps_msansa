@@ -9,9 +9,8 @@ var score
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	print("ready")
 	randomize()
-	#new_game()
+	new_game()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,12 +25,10 @@ func game_over():
 	$MobTimer.stop()
 
 func new_game():
-	#se llama pese a no pulsar
-	print("new game")
 	score = 0
 	$Player.start($StartPosition.position)
 	$StartTimer.start()
-	get_tree().call_group("grup", "queue_free")
+	get_tree().call_group("mobs", "queue_free")
 
 
 func _on_MobTimer_timeout():
